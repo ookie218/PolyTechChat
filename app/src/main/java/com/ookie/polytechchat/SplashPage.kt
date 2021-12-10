@@ -14,7 +14,7 @@ class SplashPage : AppCompatActivity() {
         setContentView(R.layout.activity_splash_page)
 
         Handler().postDelayed({ //Intent goes from Splash to Main
-            val splashIntent = Intent(this@SplashPage, MainActivity::class.java)
+            val splashIntent = Intent(this@SplashPage, Login::class.java)
             startActivity(splashIntent)
             finish()
         }, SPLASH_TIME_OUT.toLong())//Pass in how long it goes for
