@@ -6,6 +6,10 @@ class User {
     var email: String? = null
     var uID: String? = null
 
+    //Set to -1, so it cannot be possible to reference another image
+    val NO_IMAGE_PROVIDED = -1
+
+    var mImageResourceID = NO_IMAGE_PROVIDED
     constructor() {
 
     }
@@ -14,6 +18,14 @@ class User {
         this.name = name
         this.email = email
         this.uID = uID
+    }
+
+    //Use this constructor if there is an image available
+    constructor(name: String?, email: String?, uID: String?, imageResourceID: Int) {
+        this.name = name
+        this.email = email
+        this.uID = uID
+        this.mImageResourceID = imageResourceID
     }
 
 }
