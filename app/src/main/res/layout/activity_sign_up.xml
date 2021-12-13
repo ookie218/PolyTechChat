@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".SignUp">
 
-    <TextView
+    <ImageView
         android:id="@+id/app_logo"
         android:layout_width="150dp"
         android:layout_height="150dp"
