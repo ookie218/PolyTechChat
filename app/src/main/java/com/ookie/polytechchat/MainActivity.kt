@@ -141,11 +141,27 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, Login::class.java)
             finish()
             startActivity(intent)
+
+            return true
+
+        } else if (item.itemId == R.id.groupChat){
+            val intent1 = Intent(this@MainActivity, GroupChatActivity::class.java)
+            startActivity(intent1)
+
+            return true
+
+        }
+
+        /* else if (item.itemId == R.id.facultyList){
+            val intent1 = Intent(this@MainActivity, FacultyActivity::class.java)
+            startActivity(intent1)
+
             return true
         }
 
-        return true
+        */
 
+        return true
     }
 
 }
