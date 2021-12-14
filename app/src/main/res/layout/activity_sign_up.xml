@@ -6,22 +6,39 @@
     android:layout_height="match_parent"
     tools:context=".SignUp">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/app_logo"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/ecpi_logo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp" >
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_centerHorizontal="true">
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/app_logo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_baseline_person_24"
+            android:layout_gravity="center_horizontal" >
 
-    </de.hdodenhof.circleimageview.CircleImageView>
+        </de.hdodenhof.circleimageview.CircleImageView>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/edit_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_baseline_photo_camera_24"
+            android:layout_gravity="right" >
+
+        </de.hdodenhof.circleimageview.CircleImageView>
+
+    </FrameLayout>
+
 
     <EditText
         android:id="@+id/editText_name"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@id/app_logo"
+        android:layout_below="@id/frame_layout"
         android:layout_marginTop="10dp"
         android:hint="Name"
         android:paddingLeft="13dp"

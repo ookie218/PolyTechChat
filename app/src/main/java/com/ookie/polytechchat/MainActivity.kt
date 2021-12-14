@@ -22,8 +22,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var userRecyclerView: RecyclerView
     private lateinit var userList: ArrayList<User>
-    private lateinit var tempUserList: ArrayList<User>
-    private lateinit var adapter: UserAdapter
+    private lateinit var tempUserList: ArrayList<User> // We will use this one to display query results
+    private var adapter: UserAdapter ?= null
     private lateinit var mAuth: FirebaseAuth
     private lateinit var mDBReference: DatabaseReference
 
@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         userList = ArrayList()
         tempUserList = ArrayList()
+
         adapter = UserAdapter(this, userList)
 
         //Define RecyclerView
@@ -69,7 +70,7 @@ class MainActivity : AppCompatActivity() {
 
                 }
                 //Notify Adapter
-                adapter.notifyDataSetChanged()
+                adapter?.updateData(userList)
 
             }
 
@@ -79,10 +80,11 @@ class MainActivity : AppCompatActivity() {
 
         })
 
-        //Copying info into temp list
+
         tempUserList.addAll(userList)
+        //adapter = UserAdapter(this, tempUserList)
 
-
+/*
         searchButton = findViewById(R.id.search_button)
         //Test searching on a new screen
         searchButton.setOnClickListener {
@@ -90,7 +92,7 @@ class MainActivity : AppCompatActivity() {
             finish()
             startActivity(searchIntent)
         }
-
+*/
     }
 
     //Inflate the options menu (Pass in XML as well as menu variable)
@@ -101,8 +103,49 @@ class MainActivity : AppCompatActivity() {
         //Search functionality
         val item = menu?.findItem(R.id.searchAction)
         val searchView = item?.actionView as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                TODO("Not yet implemented")
+            }
 
-        return false
+            override fun onQueryTextChange(newText: String?): Boolean {
+                println(newText)
+                tempUserList.clear()
+                val searchText = newText?.lowercase(Locale.getDefault())?.trim()
+                if (searchText!!.isNotEmpty()) {
+                    println(userList.toString())
+                    userList.forEach {
+                        if (it.name?.lowercase(Locale.getDefault())!!.contains(searchText)) {
+
+                            tempUserList.add(it)
+
+                        }
+                    }
+
+                    userRecyclerView.adapter = adapter
+                    adapter?.userList = tempUserList
+                   // adapter?.updateData(tempUserList)
+
+                    adapter?.notifyDataSetChanged()
+
+
+                    //userRecyclerView.adapter!!.notifyDataSetChanged()
+
+                } else {
+
+                    //If text is empty, inflate entire list
+                    tempUserList.clear()
+                    tempUserList.addAll(userList)
+                    userRecyclerView.adapter!!.notifyDataSetChanged()
+
+                }
+
+                return true
+            }
+
+        })
+
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -123,6 +166,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun getUserData(){
 
+
+    }
 
 }
