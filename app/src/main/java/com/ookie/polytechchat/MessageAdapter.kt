@@ -33,7 +33,7 @@ class MessageAdapter(val context: Context, val messageList: ArrayList<Message>):
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
-        //Get Current Message (outside of if statement so it can be used for both scenarios
+        //Get Current Message (outside of if statement so it can be used for both scenarios)
         val currentMessage = messageList[position]
 
         if (holder.javaClass == SentViewHolder::class.java) {

@@ -1,5 +1,7 @@
 package com.ookie.polytechchat
 
+import android.app.SearchManager
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,19 +9,26 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
+import androidx.appcompat.widget.SearchView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var userRecyclerView: RecyclerView
     private lateinit var userList: ArrayList<User>
+    private lateinit var tempUserList: ArrayList<User>
     private lateinit var adapter: UserAdapter
     private lateinit var mAuth: FirebaseAuth
     private lateinit var mDBReference: DatabaseReference
+
+    //Test the search function
+    private lateinit var searchButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         mDBReference = FirebaseDatabase.getInstance().getReference()
 
         userList = ArrayList()
+        tempUserList = ArrayList()
         adapter = UserAdapter(this, userList)
 
         //Define RecyclerView
@@ -69,12 +79,30 @@ class MainActivity : AppCompatActivity() {
 
         })
 
+        //Copying info into temp list
+        tempUserList.addAll(userList)
+
+
+        searchButton = findViewById(R.id.search_button)
+        //Test searching on a new screen
+        searchButton.setOnClickListener {
+            val searchIntent = Intent(this@MainActivity, SearchActivity::class.java)
+            finish()
+            startActivity(searchIntent)
+        }
+
     }
 
     //Inflate the options menu (Pass in XML as well as menu variable)
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
-        return super.onCreateOptionsMenu(menu)
+
+
+        //Search functionality
+        val item = menu?.findItem(R.id.searchAction)
+        val searchView = item?.actionView as SearchView
+
+        return false
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

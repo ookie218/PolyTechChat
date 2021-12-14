@@ -6,10 +6,22 @@ class User {
     var email: String? = null
     var uID: String? = null
 
+    var rollNumber: Int? = null
+    var studentIdNumber: Int? = null
+    var department: String? = null
+    var year: Int? = null
+
+    var student: Boolean? = null
+    var facultyMember: Boolean? = null
+    var title: String? = null //Only using if they are faculty
+
+
     //Set to -1, so it cannot be possible to reference another image
     val NO_IMAGE_PROVIDED = -1
 
     var mImageResourceID = NO_IMAGE_PROVIDED
+
+
     constructor() {
 
     }
