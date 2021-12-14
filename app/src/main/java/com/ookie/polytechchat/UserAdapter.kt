@@ -64,47 +64,5 @@ class UserAdapter(val context: Context, var userList: ArrayList<User>):
         notifyDataSetChanged() //Method of User adapter
     }
 
-   /* Commenting out code for filterable
-
-   override fun getFilter(): Filter {
-        return userFilter()
-    
-    }
-
-
-    private val userFilter = object : Filter() {
-        override fun performFiltering(constraint: CharSequence?): FilterResults {
-            val filteredList: ArrayList<User>? = null
-
-            if (constraint == null || constraint.isEmpty()) {
-                filteredList?.addAll(filteredListFull)
-
-            } else {
-                var filterPattern = constraint.toString().lowercase().trim()
-
-                for (user: User in constraint) {
-                    if (user.name?.lowercase()!!.contains(filterPattern)) {
-                        filteredList?.add(user)
-                    }
-
-                }
-            }
-
-            //Must return something: Create filtered results to return
-            var results: FilterResults? = null
-            results?.values = filteredList
-
-            return results!!
-        }
-
-        override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-
-            userList.clear()
-            userList.addAll(results?.values as Collection<User>)
-            notifyDataSetChanged()
-
-        }
-
-    }*/
 
 }

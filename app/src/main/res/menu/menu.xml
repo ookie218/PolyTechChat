@@ -10,6 +10,10 @@
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="always" />
 
+    <item android:id="@+id/groupChat" android:title="Group Chat" />
+
+    <item android:id="@+id/facultyList" android:title="Faculty List" />
+
 
     <item android:id="@+id/logout" android:title="Logout"/>
 

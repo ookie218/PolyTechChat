@@ -23,16 +23,32 @@
                 android:src="@drawable/ic_launcher_background" />
 
 
-            <TextView
-                android:id="@+id/txt_name"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ookie"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:layout_margin="16dp" />
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="16dp">
+
+                <TextView
+                    android:id="@+id/txt_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ookie"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txt_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Title"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
 
         </LinearLayout>
+
 
         <View
             android:layout_width="match_parent"

@@ -40,4 +40,13 @@ class User {
         this.mImageResourceID = imageResourceID
     }
 
+    //Use this constructor if there is an image available
+    constructor(name: String?, email: String?, uID: String?, imageResourceID: Int, title: String?) {
+        this.name = name
+        this.email = email
+        this.uID = uID
+        this.mImageResourceID = imageResourceID
+        this.title = title
+    }
+
 }

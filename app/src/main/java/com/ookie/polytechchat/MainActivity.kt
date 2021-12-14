@@ -1,16 +1,12 @@
 package com.ookie.polytechchat
 
-import android.app.SearchManager
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
-import android.widget.EditText
 import androidx.appcompat.widget.SearchView
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -23,12 +19,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var userRecyclerView: RecyclerView
     private lateinit var userList: ArrayList<User>
     private lateinit var tempUserList: ArrayList<User> // We will use this one to display query results
-    private var adapter: UserAdapter ?= null
+    private lateinit var mAdapter: UserAdapter
     private lateinit var mAuth: FirebaseAuth
     private lateinit var mDBReference: DatabaseReference
-
-    //Test the search function
-    private lateinit var searchButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,14 +34,15 @@ class MainActivity : AppCompatActivity() {
         userList = ArrayList()
         tempUserList = ArrayList()
 
-        adapter = UserAdapter(this, userList)
+        mAdapter = UserAdapter(this, userList)
 
         //Define RecyclerView
         userRecyclerView = findViewById(R.id.userRecyclerView)
         //Set Layout Manager
         userRecyclerView.layoutManager = LinearLayoutManager(this)
         //Set Adapter
-        userRecyclerView.adapter = adapter
+        userRecyclerView.adapter = mAdapter
+
 
         //*Read data stored from RecyclerView*
 
@@ -70,7 +64,7 @@ class MainActivity : AppCompatActivity() {
 
                 }
                 //Notify Adapter
-                adapter?.updateData(userList)
+                mAdapter.updateData(userList)
 
             }
 
@@ -80,19 +74,8 @@ class MainActivity : AppCompatActivity() {
 
         })
 
-
         tempUserList.addAll(userList)
-        //adapter = UserAdapter(this, tempUserList)
 
-/*
-        searchButton = findViewById(R.id.search_button)
-        //Test searching on a new screen
-        searchButton.setOnClickListener {
-            val searchIntent = Intent(this@MainActivity, SearchActivity::class.java)
-            finish()
-            startActivity(searchIntent)
-        }
-*/
     }
 
     //Inflate the options menu (Pass in XML as well as menu variable)
@@ -115,21 +98,21 @@ class MainActivity : AppCompatActivity() {
                 if (searchText!!.isNotEmpty()) {
                     println(userList.toString())
                     userList.forEach {
+                        //If user name OR title
                         if (it.name?.lowercase(Locale.getDefault())!!.contains(searchText)) {
 
-                            tempUserList.add(it)
+                            //As of now, nothing contains a title
+                            // || it.title?.lowercase(Locale.getDefault())!!.contains(searchText))
 
+                            tempUserList.add(it)
                         }
                     }
 
-                    userRecyclerView.adapter = adapter
-                    adapter?.userList = tempUserList
-                   // adapter?.updateData(tempUserList)
+                    //update adapter to CUSTOM adapter
+                    userRecyclerView.adapter = mAdapter
+                    mAdapter.userList = tempUserList
 
-                    adapter?.notifyDataSetChanged()
-
-
-                    //userRecyclerView.adapter!!.notifyDataSetChanged()
+                    mAdapter.notifyDataSetChanged()
 
                 } else {
 
@@ -139,7 +122,6 @@ class MainActivity : AppCompatActivity() {
                     userRecyclerView.adapter!!.notifyDataSetChanged()
 
                 }
-
                 return true
             }
 
@@ -163,11 +145,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         return true
-
-    }
-
-    private fun getUserData(){
-
 
     }
 
