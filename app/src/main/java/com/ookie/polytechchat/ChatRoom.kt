@@ -22,6 +22,9 @@ class ChatRoom : AppCompatActivity() {
     override fun onCreate(@Nullable savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_room)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         btn_send_msg = findViewById<View>(R.id.btn_send) as ImageView
         input_msg = findViewById<View>(R.id.msg_input) as EditText
         chat_conversation = findViewById<View>(R.id.textView) as TextView

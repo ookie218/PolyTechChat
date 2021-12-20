@@ -24,6 +24,9 @@ class GroupChatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_group_chat)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         addRoom = findViewById<View>(R.id.btn_add_room) as Button
         roomName = findViewById<View>(R.id.room_name_edittext) as EditText
         listView = findViewById<View>(R.id.listView) as ListView

@@ -46,6 +46,9 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+
         //Retrieve intent data (from user adapter? Has to be since name pops up on support bar before messages are even passed / started)
         val name = intent.getStringExtra("name")
 
