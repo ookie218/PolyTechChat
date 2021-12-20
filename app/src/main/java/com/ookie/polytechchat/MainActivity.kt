@@ -151,14 +151,6 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        /* else if (item.itemId == R.id.facultyList){
-            val intent1 = Intent(this@MainActivity, FacultyActivity::class.java)
-            startActivity(intent1)
-
-            return true
-        }
-
-        */
 
         return true
     }
