@@ -5,15 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import org.w3c.dom.Text
 
 class Login : AppCompatActivity() {
 
     private lateinit var editEmail : EditText
     private lateinit var editPassword : EditText
     private lateinit var btnLogin : Button
-    private lateinit var btnSignUp : Button
+    private lateinit var forgotPasswordTV : TextView
+
 
     private lateinit var mAuth: FirebaseAuth
 
@@ -29,9 +32,12 @@ class Login : AppCompatActivity() {
         editEmail = findViewById(R.id.editText_email)
         editPassword = findViewById(R.id.editText_password)
         btnLogin = findViewById(R.id.btn_login)
-        btnSignUp = findViewById(R.id.btn_signup)
+        forgotPasswordTV = findViewById(R.id.forgotPasswordTV)
 
-        btnSignUp.setOnClickListener {
+        val registerTV: TextView = findViewById(R.id.registerTV)
+
+
+        registerTV.setOnClickListener {
             val intent = Intent(this, SignUp::class.java)
             startActivity(intent)
         }
@@ -39,11 +45,10 @@ class Login : AppCompatActivity() {
         btnLogin.setOnClickListener {
             val email = editEmail.text.toString()
             val password = editPassword.text.toString()
-
             login(email, password)
         }
-
     }
+
 
     private fun login(email: String, password: String) {
         //Logic for logging in user

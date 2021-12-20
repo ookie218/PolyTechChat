@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -99,7 +98,7 @@ class MainActivity : AppCompatActivity() {
                     println(userList.toString())
                     userList.forEach {
                         //If user name OR title
-                        if (it.name?.lowercase(Locale.getDefault())!!.contains(searchText)) {
+                        if (it.firstName?.lowercase(Locale.getDefault())!!.contains(searchText)) {
 
                             //As of now, nothing contains a title
                             // || it.title?.lowercase(Locale.getDefault())!!.contains(searchText))

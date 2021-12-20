@@ -2,18 +2,19 @@ package com.ookie.polytechchat
 
 //This is not simply a data class because FireBase needs an empty constructor to work with
 class User {
-    var name: String? = null
+    var firstName: String? = null
+    var lastName: String? = null
     var email: String? = null
     var uID: String? = null
 
-    var rollNumber: Int? = null
-    var studentIdNumber: Int? = null
+    var facultyIDNumber: String? = null
+    var idNumber: String? = null
     var department: String? = null
-    var year: Int? = null
+    var year: String? = null
 
     var student: Boolean? = null
     var facultyMember: Boolean? = null
-    var title: String? = null //Only using if they are faculty
+    var role: String? = null //Only using if they are faculty
 
 
     //Set to -1, so it cannot be possible to reference another image
@@ -26,27 +27,76 @@ class User {
 
     }
 
-    constructor(name: String?, email: String?, uID: String?) {
-        this.name = name
+    //If Student to test
+    constructor(firstName: String?, email: String?, uID: String?) {
+        this.firstName = firstName
         this.email = email
         this.uID = uID
     }
 
-    //Use this constructor if there is an image available
-    constructor(name: String?, email: String?, uID: String?, imageResourceID: Int) {
-        this.name = name
+    //If Student
+    constructor(firstName: String?, lastName: String?, email: String?, idNumber: String?, year: String?, uID: String?) {
+        this.firstName = firstName
+        this.lastName = lastName
+        this.email = email
+        this.idNumber = idNumber
+        this.year = year
+        this.uID = uID
+    }
+
+
+    //Use this constructor if there is an image available for Student
+    constructor(firstName: String?, lastName: String?, email: String?, idNumber: String?, uID: String?, imageResourceID: Int) {
+        this.firstName = firstName
+        this.lastName = lastName
+        this.email = email
+        this.idNumber = idNumber
+        //this.year = year
+        this.uID = uID
+        this.mImageResourceID = imageResourceID
+    }
+
+
+
+/*
+    //If faculty
+    constructor(firstName: String?, lastName: String?, email: String?, facultyIdNumber: String, department: String, uID: String?) {
+        this.firstName = firstName
+        this.lastName = lastName
+        this.email = email
+        this.facultyIDNumber = facultyIdNumber
+        this.department = department
+        this.uID = uID
+    }
+*/
+
+    //Use this constructor if there is an image available for faculty
+    constructor(firstName: String?, lastName: String?, email: String?, facultyIdNumber: String, department: String, uID: String?, imageResourceID: Int) {
+        this.firstName = firstName
+        this.lastName = lastName
         this.email = email
         this.uID = uID
         this.mImageResourceID = imageResourceID
     }
 
-    //Use this constructor if there is an image available
-    constructor(name: String?, email: String?, uID: String?, imageResourceID: Int, title: String?) {
-        this.name = name
+    //Use this constructor if there is a title but no image available
+    constructor(firstName: String?, lastName: String?, email: String?, uID: String?, role: String?) {
+        this.firstName = firstName
+        this.lastName = lastName
+        this.email = email
+        this.uID = uID
+        this.role = role
+    }
+
+
+    //Use this constructor if there is a title available
+    constructor(firstName: String?, lastName: String?, email: String?, uID: String?, imageResourceID: Int, role: String?) {
+        this.firstName = firstName
+        this.lastName = lastName
         this.email = email
         this.uID = uID
         this.mImageResourceID = imageResourceID
-        this.title = title
+        this.role = role
     }
 
 }

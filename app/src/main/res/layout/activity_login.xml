@@ -52,18 +52,28 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp" />
 
-    <Button
-        android:id="@+id/btn_signup"
-        android:layout_width="150dp"
+    <LinearLayout
+        android:id="@+id/LinearSubMenu"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_below="@id/btn_login"
-        android:text="Sign Up"
-        android:background="@drawable/btn_background"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp" />
+        android:layout_margin="16dp">
 
+        <TextView
+            android:id="@+id/forgotPasswordTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forgot Password?"
+            android:layout_weight="1"/>
 
+        <TextView
+            android:id="@+id/registerTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register"
+            android:layout_weight="1" />
+
+    </LinearLayout>
 
 </RelativeLayout>

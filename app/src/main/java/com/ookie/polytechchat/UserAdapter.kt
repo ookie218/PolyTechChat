@@ -5,8 +5,6 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.Filterable
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -23,7 +21,7 @@ class UserAdapter(val context: Context, var userList: ArrayList<User>):
     //Extend UserViewHolder we created
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
 
-        //Create a view using LayuotInflater and inflate the layout
+        //Create a view using LayoutInflater and inflate the layout
         val view: View = LayoutInflater.from(context).inflate(R.layout.user_layout, parent, false)
         return UserViewHolder(view)
     }
@@ -33,13 +31,13 @@ class UserAdapter(val context: Context, var userList: ArrayList<User>):
         val currentUser = userList[position]
 
         //textName from UserViewHolder we created
-        holder.textName.text = currentUser.name
+        holder.textFirstName.text = currentUser.firstName
 
         //setOnClickListeners *using CONTEXT (which is defined in adapter class constructor)
         holder.itemView.setOnClickListener {
             val intent = Intent(context, ChatActivity::class.java)
 
-            intent.putExtra("name", currentUser.name)
+            intent.putExtra("firstName", currentUser.firstName)
             intent.putExtra("uid", currentUser.uID)
 
             context.startActivity(intent)
@@ -55,7 +53,7 @@ class UserAdapter(val context: Context, var userList: ArrayList<User>):
     class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         //Initialize views of User Layout for ViewHolder
-        val textName = itemView.findViewById<TextView>(R.id.txt_name) //From user_layout.xml
+        val textFirstName = itemView.findViewById<TextView>(R.id.txt_firstName) //From user_layout.xml
     }
 
 

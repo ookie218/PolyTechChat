@@ -11,8 +11,9 @@
         android:orientation="horizontal"
         android:layout_marginBottom="5dp"
         android:weightSum="100">
+
         <ImageView
-            android:id="@+id/attachment"
+            android:id="@+id/attachmentButton"
             android:layout_width="40dp"
             android:layout_height="50dp"
             android:layout_weight="5"
@@ -31,7 +32,7 @@
             android:layout_marginTop="5dp"
             android:layout_toStartOf="@+id/btn_send"
             android:layout_toLeftOf="@+id/btn_send"
-            android:layout_toRightOf="@id/attachment"
+            android:layout_toRightOf="@id/attachmentButton"
             android:layout_weight="85" />
 
         <ImageView

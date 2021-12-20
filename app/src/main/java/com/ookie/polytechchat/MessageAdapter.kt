@@ -4,9 +4,16 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+
+
+
 
 //Extends RecyclerView - *Make sure to Pass in RecyclerView.ViewHolder and implement members
 
@@ -17,6 +24,7 @@ class MessageAdapter(val context: Context, val messageList: ArrayList<Message>):
     //We will override getItemViewType which will return INT depending on view type
     val ITEM_RECEIVE = 1
     val ITEM_SENT = 2
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
@@ -39,10 +47,22 @@ class MessageAdapter(val context: Context, val messageList: ArrayList<Message>):
         if (holder.javaClass == SentViewHolder::class.java) {
             //do stuff for sentViewHolder
 
+
             //Create object as instance of class?
             val viewHolder = holder as SentViewHolder
 
             holder.sentMessage.text = currentMessage.message
+
+
+            var isPhoto: Boolean? = null
+
+            if (isPhoto != null) {
+                holder.sentImage.setImageResource(currentMessage.photoResource!!)
+                holder.sentImage?.isVisible = true
+
+            } else {
+                holder.sentImage?.isVisible = false
+            }
 
         } else {
             //do stuff for ReceivedViewHolder
@@ -52,6 +72,14 @@ class MessageAdapter(val context: Context, val messageList: ArrayList<Message>):
 
             holder.receivedMessage.text = currentMessage.message
 
+            var isPhoto: Boolean? = null
+
+            if (isPhoto != null) {
+                holder.receivedImage.setImageResource(currentMessage.photoResource!!)
+                holder.receivedImage.isVisible = true
+            } else {
+                holder.receivedImage.isVisible = false
+            }
         }
 
     }
@@ -69,6 +97,7 @@ class MessageAdapter(val context: Context, val messageList: ArrayList<Message>):
         } else {
             return ITEM_RECEIVE
         }
+
     }
 
     override fun getItemCount(): Int {
@@ -80,11 +109,13 @@ class MessageAdapter(val context: Context, val messageList: ArrayList<Message>):
     class SentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val sentMessage = itemView.findViewById<TextView>(R.id.txt_sent_message)
+        val sentImage = itemView.findViewById<ImageView>(R.id.photoImageView)
     }
 
     class ReceivedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val receivedMessage = itemView.findViewById<TextView>(R.id.txt_receive_message)
+        val receivedImage = itemView.findViewById<ImageView>(R.id.photoImageView)
     }
 
 

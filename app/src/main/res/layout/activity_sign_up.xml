@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="16dp"
     tools:context=".SignUp">
 
     <FrameLayout
@@ -11,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
-        android:layout_centerHorizontal="true">
+        android:layout_gravity="center_horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/app_logo"
@@ -33,56 +35,110 @@
 
     </FrameLayout>
 
-
-    <EditText
-        android:id="@+id/editText_name"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/frame_layout"
-        android:layout_marginTop="10dp"
-        android:hint="Name"
-        android:paddingLeft="13dp"
-        android:background="@drawable/edittext_background"
-        android:layout_marginLeft="28dp"
-        android:layout_marginRight="28dp" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/editText_FirstName"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:hint="First Name"
+            android:inputType="text"
+            android:background="@drawable/edittext_background"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:layout_weight="1"/>
+
+        <EditText
+            android:id="@+id/editText_LastName"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:hint="Last Name"
+            android:inputType="text"
+            android:background="@drawable/edittext_background"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
 
     <EditText
         android:id="@+id/editText_email"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@id/editText_name"
         android:layout_marginTop="10dp"
         android:hint="Email"
-        android:paddingLeft="13dp"
+        android:inputType="textEmailAddress"
         android:background="@drawable/edittext_background"
-        android:layout_marginLeft="28dp"
-        android:layout_marginRight="28dp" />
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"/>
 
     <EditText
         android:id="@+id/editText_password"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@id/editText_email"
         android:layout_marginTop="10dp"
         android:hint="Password"
-        android:paddingLeft="13dp"
+        android:inputType="textPassword"
         android:background="@drawable/edittext_background"
-        android:layout_marginLeft="28dp"
-        android:layout_marginRight="28dp" />
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp" />
 
+    <EditText
+        android:id="@+id/editText_Department"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:hint="Department"
+        android:inputType="text"
+        android:background="@drawable/edittext_background"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose your affiliation"
+        android:textStyle="bold"
+        android:padding="16dp"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/studentRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Student"/>
+
+        <RadioButton
+            android:id="@+id/facultyRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Faculty"/>
+
+    </RadioGroup>
 
     <Button
         android:id="@+id/btn_signup"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/editText_password"
         android:text="Sign Up"
         android:background="@drawable/btn_background"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp" />
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="16dp" />
 
 
-
-</RelativeLayout>
+</LinearLayout>
