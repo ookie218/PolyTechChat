@@ -44,7 +44,7 @@ class UserDetailActivity : AppCompatActivity() {
                     if (currentUser != null) {
 
                         //Get Values
-                        val fullName = { "$currentUser.firstName $currentUser.lastName" }
+                        val fullName = currentUser.firstName + " " + currentUser.lastName
                         val role = currentUser.role
                         val email = currentUser.email
                         val id = currentUser.idNumber
@@ -52,7 +52,7 @@ class UserDetailActivity : AppCompatActivity() {
                         val department = currentUser.department
 
                         //Set to textViews
-                        userNameTextView.text = fullName.toString()
+                        userNameTextView.text = fullName
                         roleTextView.text = role
                         emailTextView.text = email
                         idNumberTextView.text = id
