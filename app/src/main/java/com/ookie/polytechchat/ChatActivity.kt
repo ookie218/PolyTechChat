@@ -122,6 +122,7 @@ class ChatActivity : AppCompatActivity() {
             messageBox.setText("")
         }
 
+        //Intent to choose photo from local storage
         attachmentButton.setOnClickListener {
 
                 var intent =  Intent(Intent.ACTION_GET_CONTENT);
@@ -133,6 +134,8 @@ class ChatActivity : AppCompatActivity() {
 
     }
 
+
+    //Send Photos over Firebase
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PICK_IMAGE_INTENT && resultCode == RESULT_OK) {
@@ -162,13 +165,5 @@ class ChatActivity : AppCompatActivity() {
         }
 
     }
-
-
-
-    var mediaUriList: ArrayList<String> = ArrayList()
-
-
-
-
 
 }

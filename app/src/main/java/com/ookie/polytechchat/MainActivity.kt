@@ -137,19 +137,25 @@ class MainActivity : AppCompatActivity() {
             mAuth.signOut() //FireBase method
 
             //Send them back to login screen
-            val intent = Intent(this@MainActivity, Login::class.java)
+            val signOutIntent = Intent(this@MainActivity, Login::class.java)
             finish()
-            startActivity(intent)
+            startActivity(signOutIntent)
 
             return true
 
         } else if (item.itemId == R.id.groupChat){
-            val intent1 = Intent(this@MainActivity, GroupChatActivity::class.java)
-            startActivity(intent1)
+            val groupChatIntent = Intent(this@MainActivity, GroupChatActivity::class.java)
+            startActivity(groupChatIntent)
 
             return true
 
-        }
+        } else if (item.itemId == R.id.userDetails){
+            val userDetailsIntent = Intent(this@MainActivity, UserDetailActivity::class.java)
+            startActivity(userDetailsIntent)
+
+        return true
+
+    }
 
 
         return true
